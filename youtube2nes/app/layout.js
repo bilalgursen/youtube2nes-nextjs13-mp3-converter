@@ -14,7 +14,8 @@ export default function RootLayout({ children }) {
       <body className={inter.className}>
         {/* Header */}
         <header className='text-white'>Navbar Bölümü</header>
-        {children}
+        <main>{children}</main>
+
         {/* Footer */}
         <footer className='text-white'>Footer Bölümü</footer>
       </body>
