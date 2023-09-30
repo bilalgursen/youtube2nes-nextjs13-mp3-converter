@@ -1,57 +1,9 @@
-"use client";
-import { useState, useEffect } from "react";
 import Image from "next/image";
 
-export default function Home() {
-  const [countdown, setCountdown] = useState("");
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      const endDate = new Date("2023-10-15").getTime();
-      const startDate = new Date().getTime();
-      const diffDate = endDate - startDate;
-
-      setCountdown(() => ({
-        days: Math.floor(diffDate / (1000 * 60 * 60 * 24)),
-        hours: Math.floor((diffDate / (1000 * 60 * 60)) % 24),
-        minutes: Math.floor((diffDate / (1000 * 60)) % 60),
-        seconds: Math.floor((diffDate / 1000) % 60),
-      }));
-    }, 1000);
-    return () => clearInterval(interval);
-  }, []);
-
+export default function Link({ params }) {
   return (
     <>
-      <div className="grid grid-flow-col gap-3 text-center auto-cols-max justify-center py-4 bg-lime-300">
-        <div className="flex flex-col p-4 bg-neutral rounded-box text-neutral-content">
-          <span className="countdown font-mono text-2xl">
-            <span style={{ "--value": countdown.days }}></span>
-          </span>
-          <span className="text-xs font-mono">Gün</span>
-        </div>
-        <div className="flex flex-col p-4 bg-neutral rounded-box text-neutral-content">
-          <span className="countdown font-mono text-2xl">
-            <span style={{ "--value": countdown.hours }}></span>
-          </span>
-          <span className="text-xs font-mono">Saat</span>
-        </div>
-        <div className="flex flex-col p-4 bg-neutral rounded-box text-neutral-content">
-          <span className="countdown font-mono text-2xl">
-            <span style={{ "--value": countdown.minutes }}></span>
-          </span>
-          <span className="text-xs font-mono">Dakika</span>
-        </div>
-        <div className="flex flex-col p-4 bg-neutral rounded-box text-neutral-content">
-          <span className="countdown font-mono text-2xl">
-            <span style={{ "--value": countdown.seconds }}></span>
-          </span>
-          <span className="text-xs font-mono">Saniye</span>
-        </div>
-      </div>
-      {/* Page Content */}
-      <div>
-        <div className="h-screen grid grid-flow-row-dense grid-rows-6 sm:grid-rows-2 grid-cols-4 gap-12 md:mx-1 mx-6 py-8">
+      <div className="h-screen grid grid-flow-row-dense grid-rows-6 sm:grid-rows-2 grid-cols-4 gap-12 md:mx-1 mx-6 py-8">
           <div className="col-span-4 row-span-4 sm:row-span-1 md:col-start-2 md:col-span-2 bg-base-300 indicator rounded-3xl w-full">
             <span className="indicator-item badge badge-lg bg-lime-400 text-black border-lime-400 mr-4 sm:mr-0">
               new
@@ -60,7 +12,7 @@ export default function Home() {
               <div className="form-control w-full items-center justify-center">
                 <label className="label mt-14">
                   <span className="label-text mb-2 flex items-center text-xl sm:text-4xl">
-                    Enter your link{" "}
+                  {params.link}
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
                       fill="none"
@@ -183,7 +135,7 @@ export default function Home() {
             <h1 className="text-9xl">5</h1>
           </div>
         </div>
-      </div>
     </>
+    
   );
 }
