@@ -1,10 +1,33 @@
 "use client";
 import Link from "next/link";
-import React from "react";
+import React, { useState , useEffect } from "react";
 import ThemeSwitcher from "@/app/themeSwitcher";
 
 export default function Header() {
-  
+  const [title, setTitle] = useState("Beta");
+  const [hovered, setHovered] = useState(false); // Link üzerine gelip gelmediğini takip eden bir state
+
+  useEffect(() => {
+    let intervalId;
+
+    if (hovered) {
+      const alternateTitles = ["Easy", "Way", "Convert", "Mp3"];
+      let currentIndex = 0;
+
+      // Başlığı belirli aralıklarla değiştir
+      intervalId = setInterval(() => {
+        setTitle(alternateTitles[currentIndex]);
+        currentIndex = (currentIndex + 1) % alternateTitles.length;
+      }, 200); // Her saniye değiştir, isteğinize göre ayarlayabilirsiniz
+    } else {
+      // Link üzerinden çıkıldığında başlığı tekrar orijinal haline getir
+      setTitle("Beta");
+    }
+
+    // Component unmount edildiğinde interval'i temizle
+    return () => clearInterval(intervalId);
+  }, [hovered]);
+
   return (
     <>
       {/* Header */}
@@ -57,9 +80,14 @@ export default function Header() {
             <div className="navbar-center">
               <div className="indicator">
                 <span className="indicator-item badge badge-secondary mt-2 badge-sm">
-                  beta
+                  {title}
                 </span>
-                <Link href="/" className="btn btn-ghost normal-case text-xl">
+                <Link
+                  onMouseEnter={() => setHovered(true)} // Link üzerine gelindiğinde hovered'ı true yap
+                  onMouseLeave={() => setHovered(false)} // Link üzerinden çıkıldığında hovered'ı false yap
+                  href="/"
+                  className="btn btn-ghost normal-case text-xl"
+                >
                   Youtube2nes
                 </Link>
               </div>
