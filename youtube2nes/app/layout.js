@@ -1,6 +1,7 @@
 import "./globals.css";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
+import CountDown from "./components/Countdown";
 import { Inter } from "next/font/google";
 import Providers from "./providers";
 
@@ -18,6 +19,7 @@ export default function RootLayout({ children }) {
         {/* Main Start */}
         <Providers>
           <Header />
+          <CountDown/>
           {children}
           <Footer />
         </Providers>
