@@ -1,6 +1,6 @@
 import Link from 'next/link'
  
-export default function NotFoundLink() {
+export default function NotFound() {
   return (
     <div className='h-screen flex flex-col justify-center items-center'>
       <h1 className='font-bold text-3xl sm:text-5xl lg:text-9xl text-secondary z-10'> Link Not Found</h1>
