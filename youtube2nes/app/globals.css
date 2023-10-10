@@ -22,7 +22,7 @@ body {
 }
 
 .modal:not(dialog:not(.modal-open)),
-  .modal::backdrop {
+.modal::backdrop {
   background-color: rgba(0, 0, 0, 0.3);
   backdrop-filter: blur(5px);
   animation: modal-pop 0.2s ease-out;
@@ -31,4 +31,8 @@ body {
 .drawer-toggle:checked ~ .drawer-side > .drawer-overlay {
   background-color: hsl(0 0% 0%/0.4);
   backdrop-filter: blur(5px);
+}
+
+.big {
+  @apply absolute font-sans text-base-content font-bold blur-md sm:blur-lg;
 }
