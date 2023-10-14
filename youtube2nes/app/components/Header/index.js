@@ -11,14 +11,14 @@ export default function Header() {
     let intervalId;
 
     if (hovered) {
-      const alternateTitles = ["Easy", "Way", "Convert", "Mp3"];
+      const alternateTitles = ["Musa", "Saat", "5", "Oldu !"];
       let currentIndex = 0;
 
       // Başlığı belirli aralıklarla değiştir
       intervalId = setInterval(() => {
         setTitle(alternateTitles[currentIndex]);
         currentIndex = (currentIndex + 1) % alternateTitles.length;
-      }, 200); // Her saniye değiştir, isteğinize göre ayarlayabilirsiniz
+      }, 400);
     } else {
       // Link üzerinden çıkıldığında başlığı tekrar orijinal haline getir
       setTitle("Beta");
