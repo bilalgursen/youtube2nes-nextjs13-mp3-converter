@@ -5,7 +5,7 @@ export default function CountDown() {
   
     useEffect(() => {
       const interval = setInterval(() => {
-        const endDate = new Date("2023-10-15").getTime();
+        const endDate = new Date("2024-10-15").getTime();
         const startDate = new Date().getTime();
         const diffDate = endDate - startDate;
   
